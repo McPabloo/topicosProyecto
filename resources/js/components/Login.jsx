@@ -21,10 +21,10 @@ function Login() {
     const formData=new FormData();
     formData.append("email",formValue.email)
     formData.append("password",formValue.password)
-        axios.post("https://localhost:8080/topicos/public/api/login",
+        axios.post("https://localhost:8000/topicos/public/api/login",
         formData,
         {headers:{'Content-Type':'multipart/form-data',
-        'Acecept':'application/json'}}
+        'Accept':'application/json'}}
         ).then(Response=>{
             console.log('response:');
             console.log(response);

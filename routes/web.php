@@ -26,7 +26,7 @@ Route::view('/{path?}','welcome')
 
 
     
-Route::get('/studentIndex',[studentController::class,'index']);
+//Route::get('/studentIndex',[studentController::class,'index']);
 
 Route::get('/get_token',[studentController::class,'get_token']);
 Route::post('/store',[studentController::class,'store']);

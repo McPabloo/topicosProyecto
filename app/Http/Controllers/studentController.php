@@ -19,9 +19,10 @@ class studentController extends ResponseController
     public function index()
     {
         //$Student = Student::find(1);
-        $Student = Student::where('name','pablo')->get();
-        
-       return $this->sendResponse($Student, 'Student index');
+        //$Student = Student::where('name','pablo')->get();
+        $Student = Student::all();
+        return $Student;
+       //return $this->sendResponse($Student, 'Student index');
     }
 
     /**
@@ -107,7 +108,7 @@ class studentController extends ResponseController
         $student = Student::where('control', $request->control)->first();
         $student->name=$request->name;
         $student->last_name =$request->last_name;
-        $student->conrol =$request->control;
+        $student->control =$request->control;
         $student->email =$request->email;
         $student->birthday =$request->birthday;
         $student->save();
