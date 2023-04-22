@@ -12,4 +12,9 @@ class Discount extends Model
     protected $fillable = [
         'id','discAmount', 'description', 'code',
     ];
+
+    public function sales_histories()
+    {
+        return $this->hasMany(sales_histories::class);
+    }
 }

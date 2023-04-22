@@ -12,4 +12,15 @@ class Product extends Model
     protected $fillable = [
         'id','model', 'description', 'stock', 'price', 'brand', 'category', 'year', 'image',
     ];
+
+    public function shopping_carts()
+    {
+        return $this->belongsTo(shopping_carts::class);
+    }
+
+    public function shopping_histories()
+    {
+        return $this->hasMany(shopping_histories::class);
+    }
+
 }

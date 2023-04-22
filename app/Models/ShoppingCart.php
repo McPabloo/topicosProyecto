@@ -12,4 +12,21 @@ class ShoppingCart extends Model
     protected $fillable = [
         'id','quantity', 'product_id', 'user_id',
     ];
+
+
+    public function products()
+    {
+        return $this->hasMany(products::class);
+    }
+
+    public function sales_histories()
+    {
+        return $this->belongsTo(sales_histories::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(users::class);
+    }
+
 }

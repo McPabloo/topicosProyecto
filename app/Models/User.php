@@ -24,6 +24,12 @@ class User extends Authenticatable
         'status'
     ];
 
+    public function shopping_carts()
+    {
+        return $this->hasMany(shopping_carts::class);
+    }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
