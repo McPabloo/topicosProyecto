@@ -1,14 +1,15 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, {useState} from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Login() {
 
   const[formValue, setformValue] = useState({
     email:"",
-    password:""
-  })
+    password:"",
+  });
 
   const onChange=(e)=>{
     e.persist();
@@ -16,21 +17,25 @@ function Login() {
     [e.target.name]:e.target.value});
   }
 
-  const handleSubmit = (e) =>{
-    if (e && e.preventDefault())e.preventDefault();
-    const formData=new FormData();
-    formData.append("email",formValue.email)
-    formData.append("password",formValue.password)
-        axios.post("https://localhost:8000/topicos/public/api/login",
-        formData,
-        {headers:{'Content-Type':'multipart/form-data',
-        'Accept':'application/json'}}
-        ).then(Response=>{
+  const handleSubmit = async (e) =>{
+    if (e && e.preventDefault()) e.preventDefault();
+        const formData = new FormData();
+        formData.append("email", formValue.email);
+        formData.append("password", formValue.password);
+        await axios.post("http://127.0.0.1/topicos/public/api/login", formData,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Accept': 'application/json'
+                }
+            }
+        ).then(response => {
+          console.log('Correcto');
             console.log('response:');
             console.log(response);
         }).catch(error=>{
             console.log(error);
-
+            console.log('Incorrecto');
         });
     };
 
@@ -50,9 +55,14 @@ function Login() {
         <Form.Control type="password" placeholder="Password" value={formValue.password}
         onChange={onChange} name="password" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
+
+      <div className="signup-link-container">
+        ¿No tienes una cuenta?{" "}
+        <Link to="/electricarNE2/public/Register" className="signup-link">
+            Regístrate aquí
+        </Link>
+      </div>
+      
       <Button variant="primary" type="submit">
         Submit
       </Button>
