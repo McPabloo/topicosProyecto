@@ -1,0 +1,11 @@
+.menus {
+    background-image: linear-gradient(to bottom, #59554c 0%, #a2a6a1 100%);
+    backdrop-filter: blur(10px);
+}
+
+.nav-title{
+    color: #f6f9f8;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18 pt;
+}

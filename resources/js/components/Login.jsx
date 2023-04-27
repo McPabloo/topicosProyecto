@@ -1,10 +1,12 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import '../../css/login.css';
+import { Form, Button, Container, Modal } from "react-bootstrap";
 import React, {useState} from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Login() {
+
+  const navigate = useNavigate();
 
   const[formValue, setformValue] = useState({
     email:"",
@@ -33,6 +35,13 @@ function Login() {
           console.log('Correcto');
             console.log('response:');
             console.log(response);
+            if (response.status === 200) {
+              if(response.data.email.endsWith('@yahoo.com')){
+                //window.GlobalTipoUsuario=1;
+                //localStorage.setItem("tipoUsuario",1);
+                navigate('/topicos/public/Check');
+              }
+            } 
         }).catch(error=>{
             console.log(error);
             console.log('Incorrecto');
@@ -40,34 +49,44 @@ function Login() {
     };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" value={formValue.email}
-        onChange={onChange} name="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+    <div className="login-container">
+            <div className="login-form-container">
+                <h2 className="login-heading">Iniciar sesión</h2>
+                
+                <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control type="email" value={formValue.email}
+                  onChange={onChange} name="email" placeholder="Enter email" />
+                </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" value={formValue.password}
-        onChange={onChange} name="password" />
-      </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control type="password" placeholder="Password" value={formValue.password}
+                  onChange={onChange} name="password" />
+                  <Form.Text className="text-muted">
+                    Nunca compartiremos tu información con nadie más
+                  </Form.Text>
+                </Form.Group>
 
-      <div className="signup-link-container">
-        ¿No tienes una cuenta?{" "}
-        <Link to="/electricarNE2/public/Register" className="signup-link">
-            Regístrate aquí
-        </Link>
-      </div>
-      
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
-  );
+                <div className="signup-link-container">
+                  ¿No tienes una cuenta?{" "}
+                  <Link to="/topicos/public/Check" className="signup-link">
+                      Regístrate aquí
+                  </Link>
+                </div>
+                
+                <div className="login-button-container">
+                  <Button variant="primary" type="submit">
+                     Iniciar Sesión
+                  </Button>
+                </div>
+                
+              </Form>
+            
+            </div>
+    </div>
+    );
 }
 
 export default Login;

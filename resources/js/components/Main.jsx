@@ -9,8 +9,8 @@ function Main(){
     return(
     <Routes>
         <Route path="/topicos/public/" element={<Menu/>}>
-            <Route path="Login" element={<Login />} />
             <Route path="Input" element={<Input />} />
+            <Route path="Login" element={<Login />} />
             <Route path="Check" element={<Check />} />
         </Route>
     </Routes>
