@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\studentController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::post('register',[RegisterController::class,'register']);
 Route::post('login',[RegisterController::class,'login']);
 //Route::get('/studentIndex',[studentController::class,'index']);
 Route::get('/get_token',[studentController::class,'get_token']);
+Route::get('/index_productos', [ProductController::class,'index']);
 
 Route::middleware('auth:api')->group(function(){
    Route::get('/studentIndex',[studentController::class,'index']);

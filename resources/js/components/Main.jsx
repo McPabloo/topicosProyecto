@@ -2,6 +2,7 @@ import React from 'react';
 import Login from "./Login";
 import Menu from "./Menu";
 import Input from "./Input";
+import Homenl from "./Homenl";
 import Check from "./Check";
 import {Route, Routes, Navigate} from "react-router-dom";
 
@@ -12,6 +13,7 @@ function Main(){
             <Route path="Input" element={<Input />} />
             <Route path="Login" element={<Login />} />
             <Route path="Check" element={<Check />} />
+            <Route path="Homenl" element={<Homenl />} />
         </Route>
     </Routes>
     )

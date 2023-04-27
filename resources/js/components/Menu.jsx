@@ -28,7 +28,7 @@ function Menu() {
         <Navbar className="menus">
             <Container>
                 <Navbar.Brand className="nav-title">No logeado</Navbar.Brand>
-                <Navbar.Brand className="nav-title" as={Link} to="Login">eDealerOnline</Navbar.Brand>
+                <Navbar.Brand className="nav-title" as={Link} to="Homenl">eDealerOnline</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link className="nav-title" as={Link} to="Login">
                         Historial de Ventas
@@ -39,7 +39,7 @@ function Menu() {
                     <Nav.Link className="nav-title" as={Link} to="Input">
                         Inventario
                     </Nav.Link>
-                    <Nav.Link className="nav-title" as={Link} to="Input">
+                    <Nav.Link className="nav-title" as={Link} to="Login">
                         Perfil
                     </Nav.Link>
                 </Nav>
