@@ -37,9 +37,16 @@ function Login() {
             console.log(response);
             if (response.status === 200) {
               if(response.data.email.endsWith('@yahoo.com')){
-                //window.GlobalTipoUsuario=1;
-                //localStorage.setItem("tipoUsuario",1);
+                window.GlobalTipoUsuario=1;
+                //indica que el usuario está logeado como cliente
+                localStorage.setItem("tipoUsuario",1);
                 navigate('/topicos/public/Check');
+              }
+              if(response.data.email.endsWith('@gmail.com')){
+                window.GlobalTipoUsuario=2;
+                //indica que el usuario está logeado como administrador
+                localStorage.setItem("tipoUsuario",2);
+                navigate('/topicos/public/Input');
               }
             } 
         }).catch(error=>{
