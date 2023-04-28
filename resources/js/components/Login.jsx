@@ -36,17 +36,20 @@ function Login() {
             console.log('response:');
             console.log(response);
             if (response.status === 200) {
+              localStorage.setItem("usuarioId",response.data.id);
+              //compruebo el id del usuario con el que estoy logeado
+              console.log(localStorage.getItem("usuarioId"));
               if(response.data.email.endsWith('@yahoo.com')){
                 window.GlobalTipoUsuario=1;
                 //indica que el usuario está logeado como cliente
                 localStorage.setItem("tipoUsuario",1);
-                navigate('/topicos/public/Check');
+                navigate('/topicos/public/Homenl');
               }
               if(response.data.email.endsWith('@gmail.com')){
                 window.GlobalTipoUsuario=2;
                 //indica que el usuario está logeado como administrador
                 localStorage.setItem("tipoUsuario",2);
-                navigate('/topicos/public/Input');
+                navigate('/topicos/public/Homenl');
               }
             } 
         }).catch(error=>{

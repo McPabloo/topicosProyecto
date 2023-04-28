@@ -27,6 +27,7 @@ Route::post('login',[RegisterController::class,'login']);
 //Route::get('/studentIndex',[studentController::class,'index']);
 Route::get('/get_token',[studentController::class,'get_token']);
 Route::get('/index_productos', [ProductController::class,'index']);
+Route::post('/get_producto', [ProductController::class,'getProducto']);
 
 Route::middleware('auth:api')->group(function(){
    Route::get('/studentIndex',[studentController::class,'index']);
