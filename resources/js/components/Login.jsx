@@ -65,23 +65,23 @@ function Login() {
                 
                 <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
+                  <Form.Label>Correo Electrónico</Form.Label>
                   <Form.Control type="email" value={formValue.email}
                   onChange={onChange} name="email" placeholder="Enter email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label>Contraseña</Form.Label>
                   <Form.Control type="password" placeholder="Password" value={formValue.password}
                   onChange={onChange} name="password" />
                   <Form.Text className="text-muted">
-                    Nunca compartiremos tu información con nadie más
+                    Tu contraseña debe ser ultra secreta
                   </Form.Text>
                 </Form.Group>
 
                 <div className="signup-link-container">
                   ¿No tienes una cuenta?{" "}
-                  <Link to="/topicos/public/Check" className="signup-link">
+                  <Link to="/topicos/public/Registro" className="signup-link">
                       Regístrate aquí
                   </Link>
                 </div>

@@ -27,7 +27,12 @@ function Menu() {
         { (window.GlobalTipoUsuario == null) ? (
         <Navbar className="menus">
             <Container>
-                <Navbar.Brand className="nav-title">No logeado</Navbar.Brand>
+                <Navbar.Brand className="nav-title"><img
+                                    src='../resources/imagenes/speedometer-unscreen.gif'
+                                    title="Logo"
+                                    alt="Logo del Proyecto"
+                                    width="50"
+                                    height="50" /></Navbar.Brand>
                 <Navbar.Brand className="nav-title" as={Link} to="Homenl">eDealerOnline</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link className="nav-title" as={Link} to="Login">

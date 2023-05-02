@@ -41,7 +41,7 @@ export default function ProductCard() {
             navigate('/topicos/public/Login');
 
         if (window.GlobalTipoUsuario == 1) {
-            
+            storeListProduct();
             setShowToastC(true);
         }
 

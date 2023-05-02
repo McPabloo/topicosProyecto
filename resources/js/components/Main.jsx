@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import Input from "./Input";
 import Homenl from "./Homenl";
 import Check from "./Check";
+import Registro from "./Registro";
 import ProductCard from "./ProductCard";
 import {Route, Routes, Navigate} from "react-router-dom";
 
@@ -16,6 +17,7 @@ function Main(){
             <Route path="ProductCard" element={<ProductCard />} />
             <Route path="Check" element={<Check />} />
             <Route path="Homenl" element={<Homenl />} />
+            <Route path="Registro" element={<Registro />} />
         </Route>
     </Routes>
     )
