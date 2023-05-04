@@ -30,6 +30,7 @@ export default function ProductCard() {
 
     useEffect(() => {
         loadProduct()
+        console.log(localStorage.getItem("usuarioId"));
         console.log(location.state.autoID);
     }, [])
 

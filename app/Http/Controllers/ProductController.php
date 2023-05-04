@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -15,6 +16,12 @@ class ProductController extends Controller
     public function index()
     {
         return $products = Product::all();
+    }
+
+    public function getUsuario(Request $request)
+    {
+        $user = User::where('id', $request->id)->first();
+        return $user;
     }
 
     public function getProducto(Request $request)

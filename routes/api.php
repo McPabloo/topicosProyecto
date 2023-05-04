@@ -29,7 +29,10 @@ Route::get('/get_token',[studentController::class,'get_token']);
 Route::get('/index_productos', [ProductController::class,'index']);
 Route::post('/get_producto', [ProductController::class,'getProducto']);
 
+Route::post('/show_usuarios', [ProductController::class,'getUsuario']);
+
 Route::middleware('auth:api')->group(function(){
-   Route::get('/studentIndex',[studentController::class,'index']);
+   //Route::get('/studentIndex',[studentController::class,'index']);
+   
 });
 

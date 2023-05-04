@@ -35,21 +35,12 @@ function Menu() {
                                     height="50" /></Navbar.Brand>
                 <Navbar.Brand className="nav-title" as={Link} to="Homenl">eDealerOnline</Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link className="nav-title" as={Link} to="Login">
-                        Historial de Ventas
-                    </Nav.Link>
-                    <Nav.Link className="nav-title" as={Link} to="Check">
-                        Historial de Compras
-                    </Nav.Link>
-                    <Nav.Link className="nav-title" as={Link} to="Input">
-                        Inventario
-                    </Nav.Link>
-                    <Nav.Link className="nav-title" as={Link} to="Login">
-                        Perfil
+                    <Nav.Link className="nav-title" as={Link} to="Homenl">
+                        Nuestros Productos
                     </Nav.Link>
                 </Nav>
                 <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Brand className="nav-title" onClick={cerrarSesion}>Salir</Navbar.Brand>
+                    <Navbar.Brand className="nav-title" as={Link} to="Login">Iniciar Sesión</Navbar.Brand>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
@@ -62,19 +53,19 @@ function Menu() {
         <Navbar className="menus">
             <Container>
                 <Navbar.Brand className="nav-title">Cliente</Navbar.Brand>
-                <Navbar.Brand className="nav-title" as={Link} to="Login">eDealerOnline</Navbar.Brand>
+                <Navbar.Brand className="nav-title"><img
+                                    src='../resources/imagenes/speedometer-unscreen.gif'
+                                    title="Logo"
+                                    alt="Logo del Proyecto"
+                                    width="50"
+                                    height="50" /></Navbar.Brand>
+                <Navbar.Brand className="nav-title" as={Link} to="Homenl">eDealerOnline</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link className="nav-title" as={Link} to="Login">
-                        Historial de Ventas
+                        Carrito
                     </Nav.Link>
-                    <Nav.Link className="nav-title" as={Link} to="Check">
-                        Historial de Compras
-                    </Nav.Link>
-                    <Nav.Link className="nav-title" as={Link} to="Input">
-                        Inventario
-                    </Nav.Link>
-                    <Nav.Link className="nav-title" as={Link} to="Input">
-                        Perfil
+                    <Nav.Link className="nav-title" as={Link} to="Profile">
+                        Mi Perfil
                     </Nav.Link>
                 </Nav>
                 <Navbar.Collapse className="justify-content-end">
@@ -91,7 +82,13 @@ function Menu() {
         <Navbar className="menus">
             <Container>
                 <Navbar.Brand className="nav-title">Administrador</Navbar.Brand>
-                <Navbar.Brand className="nav-title" as={Link} to="Login">eDealerOnline</Navbar.Brand>
+                <Navbar.Brand className="nav-title"><img
+                                    src='../resources/imagenes/speedometer-unscreen.gif'
+                                    title="Logo"
+                                    alt="Logo del Proyecto"
+                                    width="50"
+                                    height="50" /></Navbar.Brand>
+                <Navbar.Brand className="nav-title" as={Link} to="Homenl">eDealerOnline</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link className="nav-title" as={Link} to="Login">
                         Historial de Ventas
@@ -102,7 +99,7 @@ function Menu() {
                     <Nav.Link className="nav-title" as={Link} to="Input">
                         Inventario
                     </Nav.Link>
-                    <Nav.Link className="nav-title" as={Link} to="Input">
+                    <Nav.Link className="nav-title" as={Link} to="Profile">
                         Perfil
                     </Nav.Link>
                 </Nav>
