@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import Input from "./Input";
 import Homenl from "./Homenl";
 import Check from "./Check";
+import UserEdit from "./UserEdit";
 import Registro from "./Registro";
 import ProductCard from "./ProductCard";
 import Profile from "./Profile";
@@ -20,6 +21,7 @@ function Main(){
             <Route path="Homenl" element={<Homenl />} />
             <Route path="Registro" element={<Registro />} />
             <Route path="Profile" element={<Profile />} />
+            <Route path="UserEdit" element={<UserEdit />} />
         </Route>
     </Routes>
     )

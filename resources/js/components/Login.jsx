@@ -37,8 +37,10 @@ function Login() {
             console.log(response);
             if (response.status === 200) {
               localStorage.setItem("usuarioId",response.data.id);
+              localStorage.setItem("token",response.data.token);
               //compruebo el id del usuario con el que estoy logeado
               console.log(localStorage.getItem("usuarioId"));
+              //console.log(localStorage.getItem("token"));
               if(response.data.email.endsWith('@yahoo.com')){
                 window.GlobalTipoUsuario=1;
                 //indica que el usuario está logeado como cliente

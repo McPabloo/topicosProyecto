@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facadest\DB;
 use App\Models\Product;
+use Validator;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ResponseController;
 
-class ProductController extends Controller
+class ProductController extends ResponseController
 {
     /**
      * Display a listing of the resource.
@@ -28,6 +31,23 @@ class ProductController extends Controller
     {
         $product = Product::where('id', $request->id)->first();
         return $product;
+    }
+
+    public function updateUser(Request $request)
+    {
+        $user = User::where('id', $request->id)->first();
+        $user->street=$request->street;
+        $user->city =$request->city;
+        $user->phone =$request->phone;
+        $user->email =$request->email;
+        $user->birthday =$request->birthday;
+        $user->save();
+        
+    }
+
+    public function get_token()
+    {
+        return csrf_token();
     }
 
     /**

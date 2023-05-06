@@ -13,6 +13,7 @@ class ResponseController extends Controller
             'message' => $message,
             'email' => $result['email'],
             'id' => $result['id'],
+            'token' => $result['token'],
         ];
         return response()->json($response, 200);
     }

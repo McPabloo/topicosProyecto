@@ -14,6 +14,11 @@ class RegisterController extends ResponseController
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
+            'birthday' => 'required',
+            'joinDate' => 'required',
+            'city' => 'required',
+            'street' => 'required',
+            'phone' => 'required|max:13', 
             'c_password' => 'required|same:password',
         ]);
 
@@ -28,6 +33,12 @@ class RegisterController extends ResponseController
         $success['token'] = $user->createToken('MyApp')->accessToken;
         $success['name'] = $user->name;
         $success['email'] = $user->email;
+        $success['email'] = $user->email;
+        $success['birthday'] = $user->birthday;
+        $success['joinDate'] = $user->joinDate;
+        $success['city'] = $user->city;
+        $success['street'] = $user->street;
+        $success['phone'] = $user->phone;
         $success['id'] = $user->id;
 
         return $this->sendResponse($success,'User Register Succesfully!');
