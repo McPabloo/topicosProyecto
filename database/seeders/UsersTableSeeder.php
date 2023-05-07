@@ -115,6 +115,8 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
 
+            
+
             [
                 'name' => 'lauro manuel',
                 'email' => 'lauromanuel@gamil.com',

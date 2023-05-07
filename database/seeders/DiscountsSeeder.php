@@ -54,7 +54,7 @@ class DiscountsSeeder extends Seeder
             
             
             [
-                'discAmount' => 40000,
+                'discAmount' => 40000, 
                 'description' => 'Descuento de cliente frecuente',
                 'code' => 'DESC15'
             ],
