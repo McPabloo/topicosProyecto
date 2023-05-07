@@ -20,9 +20,9 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name' => 'Juan Perez',
-                'email' => 'juanperez@example.com',
+                'email' => 'juanperez@gmail.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password123'),
+                'password' => 'password123',
                 'status' => 'client',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
@@ -30,9 +30,9 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'name' => 'Maria Garcia',
-                'email' => 'mariagarcia@example.com',
+                'email' => 'mariagarcia@yahoo.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password123'),
+                'password' => 'password123',
                 'status' => 'client',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
@@ -41,9 +41,9 @@ class UsersTableSeeder extends Seeder
             
             [
                 'name' => 'Pedro Rodriguez',
-                'email' => 'pedrorodriguez@example.com',
+                'email' => 'pedrorodriguez@gmail.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password123'),
+                'password' => 'password123',
                 'status' => 'client',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
@@ -52,9 +52,9 @@ class UsersTableSeeder extends Seeder
             
             [
                 'name' => 'Ana Lopez',
-                'email' => 'analopez@example.com',
+                'email' => 'analopez@yahoo.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password123'),
+                'password' => 'password123',
                 'status' => 'client',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
@@ -63,9 +63,9 @@ class UsersTableSeeder extends Seeder
             
             [
                 'name' => 'Carlos Martinez',
-                'email' => 'carlosmartinez@example.com',
+                'email' => 'carlosmartinez@gmail.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password123'),
+                'password' => 'password123',
                 'status' => 'client',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
@@ -74,9 +74,9 @@ class UsersTableSeeder extends Seeder
             
             [
                 'name' => 'Laura Hernandez',
-                'email' => 'laurahernandez@example.com',
+                'email' => 'laurahernandez@yahoo.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password123'),
+                'password' => 'password123',
                 'status' => 'client',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
@@ -85,9 +85,9 @@ class UsersTableSeeder extends Seeder
             
             [
                 'name' => 'Maria Rodriguez',
-                'email' => 'mariarodriguez@example.com',
+                'email' => 'mariarodriguez@gmail.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password456'),
+                'password' => 'password123',
                 'status' => 'administrator',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
@@ -95,9 +95,9 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'name' => 'Pedro Gomez',
-                'email' => 'pedrogomez@example.com',
+                'email' => 'pedrogomez@yahoo.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password789'),
+                'password' => 'password123',
                 'status' => 'client',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
@@ -105,15 +105,39 @@ class UsersTableSeeder extends Seeder
             ],
            
             [
-                'name' => 'Jorge Fernandez',
-                'email' => 'jorgefernandez@example.com',
+                'name' => 'Pablo perez',
+                'email' => 'pabloperez@gamil.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('passworddef'),
+                'password' => 'pablo123',
                 'status' => 'client',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+
+            [
+                'name' => 'lauro manuel',
+                'email' => 'lauromanuel@gamil.com',
+                'email_verified_at' => now(),
+                'password' => 'lauro123',
+                'status' => 'client',
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            [
+                'name' => 'ana elizabeth',
+                'email' => 'anaeli@yahoo.com',
+                'email_verified_at' => now(),
+                'password' => 'ana123',
+                'status' => 'client',
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+
         ]);
     }
 }

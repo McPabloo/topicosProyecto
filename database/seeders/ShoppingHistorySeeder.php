@@ -97,6 +97,15 @@ class ShoppingHistorySeeder extends Seeder
                 "updated_at" => now(),
             ],
 
+            [
+                "user_id" => 10,
+                "quantity" => 1,
+                "product_id" => 10,
+                "sDate" => "2022-04-10",
+                "created_at" => now(),
+                "updated_at" => now(),
+            ],
+
            
 
 
