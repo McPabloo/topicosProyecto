@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShoppingCartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::post('/get_producto', [ProductController::class,'getProducto']);
 
 Route::post('/show_usuarios', [ProductController::class,'getUsuario'])->middleware('auth:api');
 Route::post('/updateUser', [ProductController::class,'updateUser'])->middleware('auth:api');
+Route::post('/insertCarrito', [ShoppingCartController::class,'store'])->middleware('auth:api');
 
 
  

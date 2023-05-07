@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
+use Validator;
+use Illuminate\Support\Facades\DB;
 
 class ShoppingCartController extends Controller
 {
@@ -35,7 +37,22 @@ class ShoppingCartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'cantidad' => 'required',
+            'producto_id' => 'required',
+            'usuario_id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $lista_carritos = ShoppingCart::create([
+            'user_id' => $request->usuario_id,
+            'product_id' => $request->producto_id,
+            'quantity' => $request->cantidad
+        ]);
+        $lista_carritos->save();
     }
 
     /**

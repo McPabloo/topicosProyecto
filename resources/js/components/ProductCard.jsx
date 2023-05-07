@@ -9,6 +9,7 @@ export default function ProductCard() {
     //si no hay nada en el estado de location toma el valor 2
     const [productoId, setProdutoId] = useState(location?.state?.autoID ?? 1);
     const [producto, setProducto] = useState({});
+    const token = localStorage.getItem('token');
 
     const loadProduct = async () => {
         const config = {
@@ -55,15 +56,15 @@ export default function ProductCard() {
         const config = {
             headers: {
                 'Content-Type': 'multipart/form-data',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + token
             }
         };
         const data = new FormData();
-        data.append("usuario_id", window.GlobalUsuarioId);
-        data.append("carrito_id", window.GlobalUsuarioId);
+        data.append("usuario_id", localStorage.getItem("usuarioId"));
         data.append("cantidad", 1);
         data.append("producto_id", productoId);
-        await axios.post("http://127.0.0.1/topicos/public/api/store_lista_carritos", data, config)
+        await axios.post("http://127.0.0.1/topicos/public/api/insertCarrito", data, config)
             .then(response => {
                 console.log("añadido correctamente");
             }).catch(error => {
