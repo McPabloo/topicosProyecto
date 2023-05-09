@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
+use Illuminate\Support\Facades\Date;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,9 +16,7 @@ class RegisterController extends ResponseController
             'email' => 'required|email',
             'password' => 'required',
             'birthday' => 'required',
-            'joinDate' => 'required',
-            'city' => 'required',
-            'street' => 'required',
+            'address' => 'required',
             'phone' => 'required|max:13', 
             'c_password' => 'required|same:password',
         ]);
@@ -33,11 +32,8 @@ class RegisterController extends ResponseController
         $success['token'] = $user->createToken('MyApp')->accessToken;
         $success['name'] = $user->name;
         $success['email'] = $user->email;
-        $success['email'] = $user->email;
         $success['birthday'] = $user->birthday;
-        $success['joinDate'] = $user->joinDate;
-        $success['city'] = $user->city;
-        $success['street'] = $user->street;
+        $success['address'] = $user->address;
         $success['phone'] = $user->phone;
         $success['id'] = $user->id;
 

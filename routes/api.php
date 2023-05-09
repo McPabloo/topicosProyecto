@@ -43,6 +43,7 @@ Route::post('/get_producto', [ProductController::class,'getProducto']);
 Route::post('/show_usuarios', [ProductController::class,'getUsuario'])->middleware('auth:api');
 Route::post('/updateUser', [ProductController::class,'updateUser'])->middleware('auth:api');
 Route::post('/insertCarrito', [ShoppingCartController::class,'store'])->middleware('auth:api');
+Route::get('/cargarCarritos', [ShoppingCartController::class,'index'])->middleware('auth:api');
 
 
  

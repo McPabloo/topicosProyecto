@@ -61,7 +61,7 @@ function Menu() {
                                     height="50" /></Navbar.Brand>
                 <Navbar.Brand className="nav-title" as={Link} to="Homenl">eDealerOnline</Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link className="nav-title" as={Link} to="Login">
+                    <Nav.Link className="nav-title" as={Link} to="Check">
                         Carrito
                     </Nav.Link>
                     <Nav.Link className="nav-title" as={Link} to="Profile">

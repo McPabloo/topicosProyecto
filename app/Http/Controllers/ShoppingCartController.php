@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ShoppingCart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\DB;
@@ -14,9 +15,15 @@ class ShoppingCartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $registros = DB::table('products')
+              ->join('shopping_carts', 'products.id', '=', 'shopping_carts.product_id')
+              ->select('products.image', 'products.model', 'products.price', 'products.year', 'products.id')
+              ->where('shopping_carts.status', 'false')
+              ->where('user_id', $request->user_id)
+              ->get();
+        return $registros;
     }
 
     /**
@@ -50,7 +57,8 @@ class ShoppingCartController extends Controller
         $lista_carritos = ShoppingCart::create([
             'user_id' => $request->usuario_id,
             'product_id' => $request->producto_id,
-            'quantity' => $request->cantidad
+            'quantity' => $request->cantidad,
+            'status' => 'false',
         ]);
         $lista_carritos->save();
     }

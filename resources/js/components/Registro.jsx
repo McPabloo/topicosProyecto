@@ -23,8 +23,11 @@ function Registro() {
   const[formValue, setformValue] = useState({
     email:"",
     password:"",
-    c_passwor:"",
+    c_password:"",
     name:"",
+    address:"",
+    phone:"",
+    birthday:"",
   });
 
   const onChange=(e)=>{
@@ -40,6 +43,9 @@ function Registro() {
         formData.append("password", formValue.password);
         formData.append("c_password", formValue.c_password);
         formData.append("name", formValue.name);
+        formData.append("address", formValue.address);
+        formData.append("birthday", formValue.birthday);
+        formData.append("phone", formValue.phone);
         await axios.post("http://127.0.0.1/topicos/public/api/register", formData,
             {
                 headers: {
@@ -66,7 +72,7 @@ function Registro() {
                 <Form onSubmit={handleSubmit}>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Nombre</Form.Label>
+                  <Form.Label>Nombre Completo</Form.Label>
                   <Form.Control type="text" value={formValue.name}
                   onChange={onChange} name="name" placeholder="Enter your full name" />
                 </Form.Group>
@@ -75,6 +81,24 @@ function Registro() {
                   <Form.Label>Correo Electrónico</Form.Label>
                   <Form.Control type="email" value={formValue.email}
                   onChange={onChange} name="email" placeholder="Enter email: @yahoo.com" />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Dirección de Residencia</Form.Label>
+                  <Form.Control type="text" value={formValue.address}
+                  onChange={onChange} name="address" placeholder="Avenida RDJ 402" />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Label>Fecha de Nacimiento</Form.Label>
+                  <Form.Control type="date" value={formValue.birthday}
+                  onChange={onChange} name="birthday" />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Teléfono</Form.Label>
+                  <Form.Control type="number" value={formValue.phone}
+                  onChange={onChange} name="phone" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">

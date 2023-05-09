@@ -57,8 +57,7 @@ export default function UserProfile() {
                             <h4 className="card-title"><b>Información adicional del usuario:</b></h4>
                             <p className="card-text"><b>E-mail: </b> {usuario.email}</p>
                             <p className="card-text"><b>Teléfono: </b> {usuario.phone}</p>
-                            <p className="card-text"><b>Ciudad: </b> {usuario.city}</p>
-                            <p className="card-text"><b>Calle: </b> {usuario.street}</p>
+                            <p className="card-text"><b>Ciudad: </b> {usuario.address}</p>
                             <p className="card-text"><b>Fecha de Nacimiento: </b> {usuario.birthday}</p>
                             <Button variant="primary"><Link to="/topicos/public/UserEdit" className="signup-link">Editar Perfil</Link></Button>
                         </div>
