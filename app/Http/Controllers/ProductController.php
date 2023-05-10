@@ -36,8 +36,7 @@ class ProductController extends ResponseController
     public function updateUser(Request $request)
     {
         $user = User::where('id', $request->id)->first();
-        $user->street=$request->street;
-        $user->city =$request->city;
+        $user->address=$request->address;
         $user->phone =$request->phone;
         $user->email =$request->email;
         $user->birthday =$request->birthday;

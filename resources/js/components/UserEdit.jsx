@@ -12,9 +12,8 @@ export default function UserProfile() {
 
     const[formValue, setformValue] = useState({
         email:"",
-        city:"",
+        address:"",
         phone:"",
-        street:"",
         birthday:"",
       });
     
@@ -60,8 +59,7 @@ export default function UserProfile() {
             const formData = new FormData();
             formData.append("id",localStorage.getItem("usuarioId"));
             formData.append("email", formValue.email);
-            formData.append("city", formValue.city);
-            formData.append("street", formValue.street);
+            formData.append("address", formValue.address);
             formData.append("phone", formValue.phone);
             formData.append("birthday", formValue.birthday);
             await axios.post("http://127.0.0.1/topicos/public/api/updateUser", formData,
@@ -98,7 +96,7 @@ export default function UserProfile() {
                             <Form onSubmit={handleSubmit}>
                                 
                                 <Form.Label>Introduce tu nuevo correo electrónico:</Form.Label>
-                                <Form.Control type="text" placeholder={usuario.email} value={formValue.password}
+                                <Form.Control type="text" placeholder={usuario.email} value={formValue.email}
                                 onChange={onChange} name="email" />
                                 <Form.Text className="text-muted">
                                     Recuerda que este debe ser único
@@ -108,13 +106,9 @@ export default function UserProfile() {
                                 <Form.Control type="text" placeholder={usuario.phone} value={formValue.phone}
                                 onChange={onChange} name="phone" /> <br/>
 
-                                <Form.Label>Ciudad de Residencia:</Form.Label>
-                                <Form.Control type="text" placeholder={usuario.city} value={formValue.city}
-                                onChange={onChange} name="city" />  <br/>
-
                                 <Form.Label>Dirección de Residencia:</Form.Label>
-                                <Form.Control type="text" placeholder={usuario.street} value={formValue.street}
-                                onChange={onChange} name="street" />  <br/>
+                                <Form.Control type="text" placeholder={usuario.address} value={formValue.address}
+                                onChange={onChange} name="address" />  <br/>
 
                                 <Form.Label>Fecha de Nacimiento:</Form.Label>
                                 <Form.Control type="date" placeholder={usuario.birthday} value={formValue.birthday}
