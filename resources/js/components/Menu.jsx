@@ -44,6 +44,7 @@ function Menu() {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
+      
         )
         :
         (null)
@@ -96,7 +97,7 @@ function Menu() {
                     <Nav.Link className="nav-title" as={Link} to="Check">
                         Historial de Compras
                     </Nav.Link>
-                    <Nav.Link className="nav-title" as={Link} to="Input">
+                    <Nav.Link className="nav-title" as={Link} to="Stock">
                         Inventario
                     </Nav.Link>
                     <Nav.Link className="nav-title" as={Link} to="Profile">

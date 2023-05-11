@@ -33,6 +33,14 @@ class ProductController extends ResponseController
         return $product;
     }
 
+    public function compraAuto(Request $request)
+    {
+        $user = Product::where('model', $request->model)->first();
+        $user->stock=$user->stock + $request->stock;
+        
+        $user->save();
+    }
+
     public function updateUser(Request $request)
     {
         $user = User::where('id', $request->id)->first();

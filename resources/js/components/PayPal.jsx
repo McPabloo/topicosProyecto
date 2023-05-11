@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import  "../../css/colores.css";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Paypal(props) {
+
+  const navigate = useNavigate();
+
   const [pago, setPago] = useState({ pagan: props.total });
   const [scart, setScart] = useState({ cart: props.idc });
   const token = localStorage.getItem('token');
