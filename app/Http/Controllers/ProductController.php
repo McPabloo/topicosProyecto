@@ -41,6 +41,37 @@ class ProductController extends ResponseController
         $user->save();
     }
 
+    public function addAuto(Request $request)
+    {
+        $rules = [
+            'model' => 'required|string|max:255',
+            'stock' => 'required|integer',
+            'year' => 'required|integer',
+            'description' => 'required|string|max:255',
+            'brand' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'image' => 'required',
+            'price' => 'required|numeric',
+        ];
+    
+        // Validar los campos de entrada
+        $validatedData = $request->validate($rules);
+    
+        // Crear una nueva instancia de Product con los datos validados
+        $product = new Product;
+        $product->model = $validatedData['model'];
+        $product->stock = $validatedData['stock'];
+        $product->year = $validatedData['year'];
+        $product->description = $validatedData['description'];
+        $product->brand = $validatedData['brand'];
+        $product->category = $validatedData['category'];
+        $product->price = $validatedData['price'];
+        $product->image = $validatedData['image'];
+    
+        // Guardar el nuevo producto en la base de datos
+        $product->save();
+    }
+
     public function updateUser(Request $request)
     {
         $user = User::where('id', $request->id)->first();

@@ -46,6 +46,7 @@ Route::post('/insertCarrito', [ShoppingCartController::class,'store'])->middlewa
 Route::get('/cargarCarritos', [ShoppingCartController::class,'index'])->middleware('auth:api');
 Route::post('/cambioStatusVenta', [ShoppingCartController::class,'cambioStatus'])->middleware('auth:api');
 Route::post('/compraAuto', [ProductController::class,'compraAuto'])->middleware('auth:api');
+Route::post('/addAuto', [ProductController::class,'addAuto'])->middleware('auth:api');
 
 
  

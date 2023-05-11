@@ -18,14 +18,14 @@ export default function IndexProduct() {
   //con este recibo la cantidad a comprar del modal
   const [cantidad, setCantidad] = useState(['']);
   //con este recibo los elementos para crear nuevo producto del modal
-  const [modelc, setModelc] = useState(['']);
+  /*const [modelc, setModelc] = useState(['']);
   const [yearc, setYearc] = useState(['']);
   const [descriptionc, setDescriptionc] = useState(['']);
   const [brandc, setBrandc] = useState(['']);
   const [stockc, setStockc] = useState(['']);
   const [pricec, setPricec] = useState(['']);
   const [categoryc, setCategoryc] = useState(['']);
-  const [imagec, setImagec] = useState(['']);
+  const [imagec, setImagec] = useState(['']);*/
   
 
   const [listProduct, setListProduct] = useState([]);
@@ -43,14 +43,22 @@ export default function IndexProduct() {
     setCantidad(event.target.value);
   };
 
-  const onChangeCreate = (event) => {
-    setModelc(event.target.value);
-    setYearc(event.target.value);
-    setBrandc(event.target.value);
-    setDescriptionc(event.target.value);
-    setCategoryc(event.target.value);
-    setImagec(event.target.value);
-  };
+  const[formValues, setformValues] = useState({
+    modelc:"",
+    yearc:"",
+    brandc:"",
+    categoryc:"",
+    imagec:"",
+    descriptionc:"",
+    stockc:"",
+    pricec:"",
+  });
+
+  const onChangeCreate=(e)=>{
+    e.persist();
+    setformValues({...formValues,
+    [e.target.name]:e.target.value});
+  }
 
   const realizarCompra = async () => {
     const config = {
@@ -66,6 +74,32 @@ export default function IndexProduct() {
     await axios.post("http://127.0.0.1/topicos/public/api/compraAuto", data, config)
         .then(response => {
             setShowModal(false);
+            getProduct();
+        }).catch(error => {
+            console.log(error);
+        });
+  }
+
+  const ingresarCompra = async () => {
+    const config = {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + token
+        }
+    };
+    const data = new FormData();
+    data.append("model", formValues.modelc);
+    data.append("stock", formValues.stockc);
+    data.append("year", formValues.yearc);
+    data.append("description", formValues.descriptionc);
+    data.append("brand", formValues.brandc);
+    data.append("category", formValues.categoryc);
+    data.append("image", formValues.imagec);
+    data.append("price", formValues.pricec);
+    await axios.post("http://127.0.0.1/topicos/public/api/addAuto", data, config)
+        .then(response => {
+            setShowModalCreate(false);
             getProduct();
         }).catch(error => {
             console.log(error);
@@ -206,40 +240,40 @@ export default function IndexProduct() {
                 <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Modelo del Auto</Form.Label>
-                    <FormControl name="modeloc" value={modelc} onChange={onChangeCreate} type="text" placeholder="10" />
+                    <FormControl name="modelc" value={formValues.modelc} onChange={onChangeCreate} type="text"  />
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Unidades a añadir</Form.Label>
-                    <FormControl name="stockc" value={stockc} onChange={onChangeCreate} type="text" placeholder="10" />
+                    <FormControl name="stockc" value={formValues.stockc} onChange={onChangeCreate} type="text"  />
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Precio</Form.Label>
-                    <FormControl name="pricec" value={pricec} onChange={onChangeCreate} type="text" placeholder="10" />
+                    <FormControl name="pricec" value={formValues.pricec} onChange={onChangeCreate} type="text"  />
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Descripción</Form.Label>
-                    <FormControl name="descriptionc" value={descriptionc} onChange={onChangeCreate} type="text" placeholder="10" />
+                    <FormControl name="descriptionc" value={formValues.descriptionc} onChange={onChangeCreate} type="text"  />
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Marca</Form.Label>
-                    <FormControl name="brandc" value={brandc} onChange={onChangeCreate} type="text" placeholder="10" />
+                    <FormControl name="brandc" value={formValues.brandc} onChange={onChangeCreate} type="text"  />
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Categoría</Form.Label>
-                    <FormControl name="categoryc" value={categoryc} onChange={onChangeCreate} type="text" placeholder="10" />
+                    <FormControl name="categoryc" value={formValues.categoryc} onChange={onChangeCreate} type="text"  />
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Año</Form.Label>
-                    <FormControl name="yearc" value={yearc} onChange={onChangeCreate} type="number" placeholder="10" />
+                    <FormControl name="yearc" value={formValues.yearc} onChange={onChangeCreate} type="year" />
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Imagen</Form.Label>
-                    <FormControl name="imagec" value={imagec} onChange={onChangeCreate} type="text" placeholder="10" />
+                    <FormControl name="imagec" value={formValues.imagec} onChange={onChangeCreate} type="text"  />
                 </Form.Group>
 
                 <br/>
 
-                <Button variant="primary">
+                <Button variant="primary" onClick={ingresarCompra}>
                     Aceptar
                 </Button>
 
