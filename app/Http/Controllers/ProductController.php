@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facadest\DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
+use Carbon\Carbon;
 use Validator;
 use App\Models\User;
+use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ResponseController;
 
@@ -70,6 +72,67 @@ class ProductController extends ResponseController
     
         // Guardar el nuevo producto en la base de datos
         $product->save();
+    }
+
+    public function updateAuto(Request $request)
+    {
+        $rules = [
+            'description' => 'required|string|max:255',
+            'price' => 'required|numeric',
+        ];
+    
+        // Validar los campos de entrada
+        $validatedData = $request->validate($rules);
+    
+        // Crear una nueva instancia de Product con los datos validados
+        $user = Product::where('model', $request->model)->first();
+        
+        $user->description = $request->description;
+        $user->price = $request->price;
+        $user->save();
+    }
+
+    public function getVentas(Request $request)
+    {
+
+        $year = $request->input('year');
+        $month = $request->input('month');
+        $modelo = $request->input('modelo');
+
+        if($year === "all"){
+            $rows = ShoppingCart::join('products', 'shopping_carts.product_id', '=', 'products.id')
+            ->select('products.model', DB::raw('COUNT(*) as count'))
+            ->where('shopping_carts.status', '=', 'true')
+            ->where('products.model', 'LIKE', $modelo . '%')
+            ->groupBy('products.model')
+            ->get();
+            return $rows;
+        }
+
+        if ($month === "all") {
+            $rows = DB::table('shopping_carts')
+                ->join('products', 'shopping_carts.product_id', '=', 'products.id')
+                ->selectRaw('products.model', DB::raw('COUNT(*) as count'))
+                ->where('shopping_carts.status', '=', 'true')
+                ->where('products.model', 'LIKE', $modelo . '%')
+                ->whereRaw("DATE_FORMAT(shopping_carts.updated_at, '%Y') = '$year'")
+                ->groupBy('products.model')
+                ->get();
+            return $rows;
+        }
+
+        //si recibe digamos el mes en formato 3, se autocompleta a 03
+        $month = str_pad($request->input('month'), 2, '0', STR_PAD_LEFT);
+        $rows = DB::table('shopping_carts')
+            ->join('products', 'shopping_carts.product_id', '=', 'products.id')
+            ->selectRaw('products.model', DB::raw('COUNT(*) as count'))
+            ->where('shopping_carts.status', '=', 'true')
+            ->where('products.model', 'LIKE', $modelo . '%')
+            ->whereRaw("DATE_FORMAT(shopping_carts.updated_at, '%Y-%m') = '$year-$month'")
+            ->groupBy('products.model')
+            ->get();
+        return $rows;
+        
     }
 
     public function updateUser(Request $request)

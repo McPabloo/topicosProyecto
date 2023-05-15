@@ -108,7 +108,7 @@ export default function UserProfile() {
 
                                 <Form.Label>Dirección de Residencia:</Form.Label>
                                 <Form.Control type="text" placeholder={usuario.address} value={formValue.address}
-                                onChange={onChange} name="address" />  <br/>
+                                onChange={onChange} name="address"/> <br/>
 
                                 <Form.Label>Fecha de Nacimiento:</Form.Label>
                                 <Form.Control type="date" placeholder={usuario.birthday} value={formValue.birthday}

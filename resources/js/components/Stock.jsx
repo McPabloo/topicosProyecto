@@ -17,15 +17,9 @@ export default function IndexProduct() {
   const [stockAuto, setStockAuto] = useState(['']);
   //con este recibo la cantidad a comprar del modal
   const [cantidad, setCantidad] = useState(['']);
-  //con este recibo los elementos para crear nuevo producto del modal
-  /*const [modelc, setModelc] = useState(['']);
-  const [yearc, setYearc] = useState(['']);
-  const [descriptionc, setDescriptionc] = useState(['']);
-  const [brandc, setBrandc] = useState(['']);
-  const [stockc, setStockc] = useState(['']);
-  const [pricec, setPricec] = useState(['']);
-  const [categoryc, setCategoryc] = useState(['']);
-  const [imagec, setImagec] = useState(['']);*/
+  //con estos actualizo datos del auto
+  const [desc, setDesc] = useState(['']);
+  const [precio, setPrecio] = useState(['']);
   
 
   const [listProduct, setListProduct] = useState([]);
@@ -54,10 +48,42 @@ export default function IndexProduct() {
     pricec:"",
   });
 
+  const[formUpdate, setformUpdate] = useState({
+    desc:"",
+    precio:"",
+  });
+
   const onChangeCreate=(e)=>{
     e.persist();
     setformValues({...formValues,
     [e.target.name]:e.target.value});
+  }
+
+  const onChangeUpdate=(e)=>{
+    e.persist();
+    setformUpdate({...formUpdate,
+    [e.target.name]:e.target.value});
+  }
+
+  const autoUpdate = async () => {
+    const config = {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + token
+        }
+    };
+    const data = new FormData();
+    data.append("model", selectedAuto);
+    data.append("price", formUpdate.precio);
+    data.append("description", formUpdate.desc);
+    await axios.post("http://127.0.0.1/topicos/public/api/updateAuto", data, config)
+        .then(response => {
+            setShowModalUpdate(false);
+            getProduct();
+        }).catch(error => {
+            console.log(error);
+        });
   }
 
   const realizarCompra = async () => {
@@ -158,13 +184,12 @@ export default function IndexProduct() {
                         , setStockAuto(auto.stock);}}>
                             Ingresar
                         </Button>
-                        <Button variant="info" onClick={() => {setShowModalUpdate(true), setSelectedAuto(auto.model)
-                        , setStockAuto(auto.stock);}}>
+                        <Button variant="info" onClick={() => {setShowModalUpdate(true), setSelectedAuto(auto.model);}}>
                             Editar
                         </Button>
-                        <Button variant="danger">
+                       {/*<Button variant="danger">
                             Eliminar
-                        </Button>
+                        </Button>*/} 
                     </td>
                 </tr>
               )
@@ -206,25 +231,24 @@ export default function IndexProduct() {
             <h2>{selectedAuto}</h2>
             <h4>Cantidad en Stock: {stockAuto}</h4>
                 <Form>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Unidades a añadir</Form.Label>
-                    <FormControl name="cantidad" value={cantidad} onChange={onChangeCantidad} type="text" placeholder="10" />
-                </Form.Group>
+                
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Precio</Form.Label>
-                    <FormControl name="cantidad" value={cantidad} onChange={onChangeCantidad} type="text" placeholder="10" />
+                    <FormControl name="precio" value={formUpdate.precio} onChange={onChangeUpdate} type="number"/>
                 </Form.Group>
+
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Descripción</Form.Label>
-                    <FormControl name="cantidad" value={cantidad} onChange={onChangeCantidad} type="text" placeholder="10" />
+                    <Form.Label>Precio</Form.Label>
+                    <FormControl name="desc" value={formUpdate.desc} onChange={onChangeUpdate} type="text"/>
                 </Form.Group>
+
                 <Form.Text>
-                Se recomienda mantener un total de 20 unidades en stock
+                Realizar esta acción modificarálos datos actuales en la base de datos
                 </Form.Text>
 
                 <br/><br/>
 
-                <Button variant="primary">
+                <Button variant="primary" onClick={autoUpdate}>
                     Actualizar
                 </Button>
 
