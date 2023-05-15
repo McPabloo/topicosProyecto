@@ -8,6 +8,8 @@ import UserEdit from "./UserEdit";
 import Registro from "./Registro";
 import ProductCard from "./ProductCard";
 import Profile from "./Profile";
+import PayPal from "./PayPal";
+import Stock from "./Stock";
 import {Route, Routes, Navigate} from "react-router-dom";
 
 function Main(){
@@ -22,6 +24,8 @@ function Main(){
             <Route path="Registro" element={<Registro />} />
             <Route path="Profile" element={<Profile />} />
             <Route path="UserEdit" element={<UserEdit />} />
+            <Route path="PayPal" element={<PayPal />} />
+            <Route path="Stock" element={<Stock />} />
         </Route>
     </Routes>
     )

@@ -3,6 +3,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "../../css/homeProducts.css";
+import PayPal from "./PayPal";
 
 export default function IndexProducts() {
   const navigate = useNavigate();
@@ -24,8 +25,9 @@ export default function IndexProducts() {
 
   return (
     <>
+      <br/>
       <Col style={{ textAlign: 'center' }}>
-        <h1><b>Nuestros productos</b></h1>
+        <h1><b>Tu carrito</b></h1>
       </Col>
       <Col style={{ justifyContent: 'center' }}>
         <Row className="justify-content-md-center">
@@ -62,6 +64,8 @@ export default function IndexProducts() {
                   <Row>
                     <h3 >{auto.model}</h3>
                     <h6 >{"$" + auto.price + " mxn"}</h6>
+                    <h6 >{"id" + auto.sid}</h6>
+                    <PayPal total={auto.price} idc={auto.sid}></PayPal>
                   </Row>
                   <br></br>
                   <br></br>

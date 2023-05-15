@@ -19,7 +19,8 @@ class ShoppingCartController extends Controller
     {
         $registros = DB::table('products')
               ->join('shopping_carts', 'products.id', '=', 'shopping_carts.product_id')
-              ->select('products.image', 'products.model', 'products.price', 'products.year', 'products.id')
+              ->select('products.image', 'products.model', 'products.price', 'products.year',
+              'shopping_carts.id as sid', 'products.id')
               ->where('shopping_carts.status', 'false')
               ->where('user_id', $request->user_id)
               ->get();
@@ -42,6 +43,14 @@ class ShoppingCartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function cambioStatus(Request $request)
+    {
+        $cart = ShoppingCart::where('id', $request->id)->first();
+        $cart->status = "true";
+        
+        $cart->save();
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -61,7 +70,10 @@ class ShoppingCartController extends Controller
             'status' => 'false',
         ]);
         $lista_carritos->save();
+
+        return $lista_carritos->id;
     }
+
 
     /**
      * Display the specified resource.
