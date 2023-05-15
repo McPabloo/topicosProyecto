@@ -1,0 +1,35 @@
+.cardProduct {
+    text-align: center;
+  }
+  
+  .cardProduct:hover {
+    animation-name: changeColor;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+  
+  @keyframes changeColor {
+    0% {
+      background-color: #ebf4fa;
+      color: #006655;
+      border-color: #006655;
+      border-width: 1px;
+    }
+  
+    50% {
+      background-color: #006655;
+      color: #ebf4fa;
+      border-color: #ebf4fa;
+      border-width: 1px;
+    }
+  
+    100% {
+      background-color: #ebf4fa;
+      color: #006655;
+      border-color: #006655;
+      border-width: 1px;
+    }
+  }
+  

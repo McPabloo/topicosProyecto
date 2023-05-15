@@ -6,7 +6,6 @@ import "../../css/homeProducts.css";
 
 export default function IndexProducts() {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
 
   const [listProduct, setListProduct] = useState([]);
   useEffect(() => {
@@ -14,11 +13,7 @@ export default function IndexProducts() {
   }, [])
 
   const getProduct = async () => {
-    const config = {
-      headers: { 'Authorization': 'Bearer ' + token },
-      params: { user_id: localStorage.getItem("usuarioId") }
-    };
-    const res = await axios.get('http://127.0.0.1/topicos/public/api/cargarCarritos', config);
+    const res = await axios.get('http://127.0.0.1/topicos/public/api/index_productos')
     setListProduct(res.data)
   }
 

@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
                 'status' => 'client',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
-                'updated_at' => now(),
+                'updated_at' => now(), 
             ],
             [
                 'name' => 'Maria Garcia',

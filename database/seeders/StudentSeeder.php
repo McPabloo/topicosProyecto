@@ -21,7 +21,7 @@ class StudentSeeder extends Seeder
         $student -> email = "arheee@hotmail.com";  
         $student -> program_id =  1;
         $student -> control =  "1234255"; 
-        $student -> lastname =  "lopez";
+        $student -> lastname =  "lopez"; 
         $student -> name =  "cesar";
 
         $student -> save();  

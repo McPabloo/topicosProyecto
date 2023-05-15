@@ -39,7 +39,7 @@ class ShoppingHistorySeeder extends Seeder
                 "product_id" => 3,
                 "sDate" => "2022-02-28",
                 "created_at" => now(),
-                "updated_at" => now(),
+                "updated_at" => now(), 
             ],
 
             

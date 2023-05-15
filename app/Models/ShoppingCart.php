@@ -10,7 +10,7 @@ class ShoppingCart extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id','quantity', 'product_id', 'user_id',
+        'id','quantity', 'product_id', 'user_id','status',
     ];
 
 
