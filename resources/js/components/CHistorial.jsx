@@ -46,17 +46,14 @@ export default function UChv() {
     useEffect(() => {
         loadRows();
     }, [date])
-
-    //
     const loadRows = async () => {
         const config = {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + token
-          }
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
         };
-//
         const data = new FormData();
         data.append("year", date.year);
         data.append("month", date.month);
