@@ -4,12 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\ShoppingHistory;
-
 use Illuminate\Support\Facades\DB;
 
 class ShoppingHistorySeeder extends Seeder
 {
-   /**
+    /**
      * Run the database seeds.
      *
      * @return void
@@ -21,15 +20,16 @@ class ShoppingHistorySeeder extends Seeder
                 "user_id" => 1,
                 "quantity" => 2,
                 "product_id" => 1,
-                "sDate" => "2022-03-15",
+                "sDate" => "2022-01-15",
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
+
             [
                 "user_id" => 2,
                 "quantity" => 1,
                 "product_id" => 2,
-                "sDate" => "2022-04-02",
+                "sDate" => "2022-02-02",
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
@@ -84,7 +84,7 @@ class ShoppingHistorySeeder extends Seeder
                 "user_id" => 8,
                 "quantity" => 1,
                 "product_id" => 8,
-                "sDate" => "2022-04-10",
+                "sDate" => "2022-04-12",
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
@@ -94,7 +94,7 @@ class ShoppingHistorySeeder extends Seeder
                 "user_id" => 9,
                 "quantity" => 1,
                 "product_id" => 9,
-                "sDate" => "2022-04-10",
+                "sDate" => "2022-04-11",
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
@@ -107,11 +107,13 @@ class ShoppingHistorySeeder extends Seeder
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
-
-           
-
-
+            
         ];
+
+        // Ordenar los datos por la fecha "sDate" de menor a mayor
+        usort($shoppingHistories, function ($a, $b) {
+            return strcmp($a['sDate'], $b['sDate']);
+        });
 
         DB::table('shopping_histories')->insert($shoppingHistories);
     }
