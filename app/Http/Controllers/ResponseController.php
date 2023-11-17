@@ -18,17 +18,17 @@ class ResponseController extends Controller
         return response()->json($response, 200);
     }
 
-    public function sendError($error, $errorMessage = [], $code = 404){
+    public function sendError($error, $errorMessage = [], $code = 401){
         $response = [
-            'success' => false,
+            #'success' => false,
+            'fail' => 'Fail while triying to login',
             'message' => $error,
         ];
-
 
         if(!empty($errorMessage)){
             $response['data'] = $errorMessage;
         }
 
-        return response()->json($response, $code);
+        return response()->json($response, 401);
     }
 }

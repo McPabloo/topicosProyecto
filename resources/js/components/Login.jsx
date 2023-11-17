@@ -19,11 +19,61 @@ function Login() {
     [e.target.name]:e.target.value});
   }
 
-  const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) => {
+    try {
+      if (e && e.preventDefault()) e.preventDefault();
+      const formData = new FormData();
+      formData.append("email", formValue.email);
+      formData.append("password", formValue.password);
+  
+      console.log('Entrando a API');
+  
+      const response = await axios.post(
+        "http://127.0.0.1/topicos/public/api/login",
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Accept': 'application/json'
+          }
+        }
+      );
+  
+      console.log('Correcto');
+      console.log('response:', response.status);
+  
+      if (response.status === 200) {
+        localStorage.setItem("usuarioId", response.data.id);
+        localStorage.setItem("token", response.data.token);
+  
+        console.log(localStorage.getItem("usuarioId"));
+  
+        if (response.data.email.endsWith('@yahoo.com')) {
+          window.GlobalTipoUsuario = 1;
+          localStorage.setItem("tipoUsuario", 1);
+          navigate('/topicos/public/Homenl');
+        }
+        if (response.data.email.endsWith('@gmail.com')) {
+          window.GlobalTipoUsuario = 2;
+          localStorage.setItem("tipoUsuario", 2);
+          navigate('/topicos/public/Homenl');
+        }
+      }
+    } catch (error) {
+      console.error('Incorrecto ', error.response.status);
+      console.error('Mensaje de error:', error.response.data);
+    }
+  };
+  
+
+  /*const handleSubmit = async (e) =>{
     if (e && e.preventDefault()) e.preventDefault();
         const formData = new FormData();
         formData.append("email", formValue.email);
         formData.append("password", formValue.password);
+
+        console.log('Entrando a API');
+
         await axios.post("http://127.0.0.1/topicos/public/api/login", formData,
             {
                 headers: {
@@ -33,14 +83,16 @@ function Login() {
             }
         ).then(response => {
           console.log('Correcto');
-            console.log('response:');
-            console.log(response);
-            if (response.status === 200) {
+            console.log('response:', response.status);
+            
+            
+            if (response.status === 200) { 
               localStorage.setItem("usuarioId",response.data.id);
               localStorage.setItem("token",response.data.token);
               //compruebo el id del usuario con el que estoy logeado
               console.log(localStorage.getItem("usuarioId"));
               //console.log(localStorage.getItem("token"));
+              
               if(response.data.email.endsWith('@yahoo.com')){
                 window.GlobalTipoUsuario=1;
                 //indica que el usuario está logeado como cliente
@@ -54,11 +106,59 @@ function Login() {
                 navigate('/topicos/public/Homenl');
               }
             } 
-        }).catch(error=>{
-            console.log(error);
-            console.log('Incorrecto');
+        }).catch(response=>{
+            console.error('Incorrecto ', response );
         });
-    };
+    };*/
+
+    /*
+    const handleSubmit = async (e) => {
+      try {
+        if (e && e.preventDefault()) e.preventDefault();
+        const formData = new FormData();
+        formData.append("email", formValue.email);
+        formData.append("password", formValue.password);
+        
+        console.log('Entrando a API');
+
+        const response = await axios.post(
+          "http://127.0.0.1/topicos/public/api/login",
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              'Accept': 'application/json'
+            }
+          }
+        );
+    
+        console.log('respuesta de la API:');
+        console.log(response.status);
+    
+        if (response.status === 200) {
+          localStorage.setItem("usuarioId", response.data.id);
+          localStorage.setItem("token", response.data.token);
+    
+          console.log(localStorage.getItem("usuarioId"));
+          //console.log(localStorage.getItem("token"));
+    
+          if (response.data.email.endsWith('@yahoo.com')) {
+            window.GlobalTipoUsuario = 1;
+            localStorage.setItem("tipoUsuario", 1);
+            navigate('/topicos/public/Homenl');
+          }
+          if (response.data.email.endsWith('@gmail.com')) {
+            window.GlobalTipoUsuario = 2;
+            localStorage.setItem("tipoUsuario", 2);
+            navigate('/topicos/public/Homenl');
+          }
+        }
+      } catch (error) {
+        console.error('Error al realizar la solicitud:', error);
+        console.log('Incorrecto');
+      }
+    };*/
+    
 
   return (
     <div className="login-container">
